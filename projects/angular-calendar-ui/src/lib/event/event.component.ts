@@ -14,6 +14,13 @@ export class EventComponent implements OnInit {
     name: string;
     details: string;
     htmlDetails: string;
+  } = {
+    color: '',
+    startDate: '',
+    endDate: '',
+    name: '',
+    details: '',
+    htmlDetails: '',
   };
   @Input() colors: {
     monthYearFont: string;
@@ -51,12 +58,26 @@ export class EventComponent implements OnInit {
   };
   constructor() {}
 
-  getEventColor(e) {
+  getEventColor(e: {
+    color: string;
+    startDate: string;
+    endDate: string;
+    name: string;
+    details: string;
+    htmlDetails: string;
+  }) {
     let color = e.color === '' ? '#d0eadc' : e.color;
     return color;
   }
 
-  isAllDayEvent(event) {
+  isAllDayEvent(event: {
+    color: string;
+    startDate: string;
+    endDate: string;
+    name: string;
+    details: string;
+    htmlDetails: string;
+  }) {
     let sHour = dayjs(event.startDate).hour();
     if (sHour === 0) {
       return 'All-day event: ';
@@ -95,7 +116,14 @@ export class EventComponent implements OnInit {
     return startTime + ' to ' + endTime;
   }
 
-  weekStyles(event) {
+  weekStyles(event: {
+    color: string;
+    startDate: string;
+    endDate: string;
+    name: string;
+    details: string;
+    htmlDetails: string;
+  }) {
     if (this.colors?.eventFont === '' && this.fonts.event === '') {
       return {
         'background-color': this.getEventColor(event),

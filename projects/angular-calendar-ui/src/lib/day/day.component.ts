@@ -7,9 +7,9 @@ import * as dayjs from 'dayjs';
   styleUrls: ['./day.component.css'],
 })
 export class DayComponent implements OnInit {
-  @Input() day: dayjs.Dayjs;
-  @Input() monthDate: dayjs.Dayjs;
-  @Input() today: dayjs.Dayjs;
+  @Input() day: dayjs.Dayjs = dayjs();
+  @Input() today: dayjs.Dayjs = dayjs();
+  @Input() monthDate: dayjs.Dayjs = this.today;
   @Input() colors: {
     monthYearFont: string;
     allDayColor: string;
@@ -108,6 +108,8 @@ export class DayComponent implements OnInit {
         : this.colors.todayBackgroundColor;
     if (this.isToday(day)) {
       return todayBackgroundColor;
+    } else {
+      return this.colors.allDayColor;
     }
   }
 

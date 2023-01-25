@@ -112,7 +112,7 @@ export class MonthComponent implements OnInit {
       { id: 11, name: 'December' },
     ];
     let name = monthNames.find((m) => m.id === this.monthDate.month());
-    return name.name;
+    return name?.name;
   }
 
   toYear() {
@@ -195,7 +195,7 @@ export class MonthComponent implements OnInit {
     }
   }
 
-  open(content) {
+  open(content: any) {
     this.modalService
       .open(content, { ariaLabelledBy: 'modal-basic-title' })
       .result.then(
