@@ -1,0 +1,10 @@
+.date {
+    text-align: center;
+    border-radius: 50%;
+    padding: 5px;
+  }
+
+  .date_ {
+    text-align: right;
+    margin-bottom: 3px;
+  }

@@ -1,0 +1,48 @@
+.header {
+    margin: 2px;
+  }
+
+  .default-m-nd-y {
+    color: black;
+  }
+
+  .month-name {
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .month {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  .butn {
+    border: none;
+    background-color: white;
+    padding: 0px;
+    margin: 0px;
+    width: 10px;
+  }
+
+  .week-names {
+    border-bottom: solid 1px #c7c7cc;
+    text-align: right;
+  }
+
+  button {
+    margin: 1px;
+  }
+
+  .day:nth-child(7n) {
+    border-right: solid 1px;
+    border-color: #e5e5e5;
+  }
+  .day {
+    height: calc(100vh / 6);
+    overflow-y: scroll;
+    max-width: 100%;
+    padding: 3px;
+    border-left: solid 1px;
+    border-bottom: solid 1px;
+    border-color: #e5e5e5;
+  }

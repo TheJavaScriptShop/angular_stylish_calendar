@@ -1,0 +1,10 @@
+<div class="date_">
+    <span [ngStyle]="dateStyles(day)" class="date" [innerText]="toDay(day)">
+    </span>
+  </div>
+  <lib-event
+    *ngFor="let event of showEvent(day)"
+    [event]="event"
+    [colors]="colors"
+    [fonts]="fonts"
+  ></lib-event>
