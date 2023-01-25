@@ -21,6 +21,17 @@ export class DayComponent implements OnInit {
     eventFont: string;
     todayFontColor: string;
     normalDayFontColor: string;
+  } = {
+    monthYearFont: '',
+    allDayColor: '',
+    otherMonthDaysFontColor: '',
+    weekendDaysColor: '',
+    weekendDaysFontColor: '',
+    todayBackgroundColor: '',
+    weekNameFont: '',
+    eventFont: '',
+    todayFontColor: '',
+    normalDayFontColor: '',
   };
   @Input() events: Array<{
     color: string;
@@ -29,12 +40,17 @@ export class DayComponent implements OnInit {
     name: string;
     details: string;
     htmlDetails: string;
-  }>;
+  }> = [];
   @Input() fonts: {
     monthYear: string;
     weekName: string;
     date: string;
     event: string;
+  } = {
+    monthYear: '',
+    weekName: '',
+    date: '',
+    event: '',
   };
 
   constructor() {}

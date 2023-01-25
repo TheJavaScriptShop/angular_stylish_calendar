@@ -24,12 +24,30 @@ export class EventComponent implements OnInit {
     todayBackgroundColor: string;
     weekNameFont: string;
     eventFont: string;
+    todayFontColor: string;
+    normalDayFontColor: string;
+  } = {
+    monthYearFont: '',
+    allDayColor: '',
+    otherMonthDaysFontColor: '',
+    weekendDaysColor: '',
+    weekendDaysFontColor: '',
+    todayBackgroundColor: '',
+    weekNameFont: '',
+    eventFont: '',
+    todayFontColor: '',
+    normalDayFontColor: '',
   };
   @Input() fonts: {
     monthYear: string;
     weekName: string;
     date: string;
     event: string;
+  } = {
+    monthYear: '',
+    weekName: '',
+    date: '',
+    event: '',
   };
   constructor() {}
 

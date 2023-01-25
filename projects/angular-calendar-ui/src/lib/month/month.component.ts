@@ -20,6 +20,17 @@ export class MonthComponent implements OnInit {
     eventFont: string;
     todayFontColor: string;
     normalDayFontColor: string;
+  } = {
+    monthYearFont: '',
+    allDayColor: '',
+    otherMonthDaysFontColor: '',
+    weekendDaysColor: '',
+    weekendDaysFontColor: '',
+    todayBackgroundColor: '',
+    weekNameFont: '',
+    eventFont: '',
+    todayFontColor: '',
+    normalDayFontColor: '',
   };
   @Input() events: Array<{
     color: string;
@@ -28,12 +39,17 @@ export class MonthComponent implements OnInit {
     name: string;
     details: string;
     htmlDetails: string;
-  }>;
+  }> = [];
   @Input() fonts: {
     monthYear: string;
     weekName: string;
     date: string;
     event: string;
+  } = {
+    monthYear: '',
+    weekName: '',
+    date: '',
+    event: '',
   };
   today: dayjs.Dayjs = dayjs();
   monthDate: dayjs.Dayjs = this.today;
