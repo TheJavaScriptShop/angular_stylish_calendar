@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 
 @Component({
   selector: 'lib-event',
@@ -14,13 +14,6 @@ export class EventComponent implements OnInit {
     name: string;
     details: string;
     htmlDetails: string;
-  } = {
-    color: '',
-    startDate: '',
-    endDate: '',
-    name: '',
-    details: '',
-    htmlDetails: '',
   };
   @Input() colors: {
     monthYearFont: string;
@@ -33,28 +26,15 @@ export class EventComponent implements OnInit {
     eventFont: string;
     todayFontColor: string;
     normalDayFontColor: string;
-  } = {
-    monthYearFont: '',
-    allDayColor: '',
-    otherMonthDaysFontColor: '',
-    weekendDaysColor: '',
-    weekendDaysFontColor: '',
-    todayBackgroundColor: '',
-    weekNameFont: '',
-    eventFont: '',
-    todayFontColor: '',
-    normalDayFontColor: '',
+    seperatorColor: string;
+    seperatorTopColor: string;
+    todayBtnColor: string;
   };
   @Input() fonts: {
     monthYear: string;
     weekName: string;
     date: string;
     event: string;
-  } = {
-    monthYear: '',
-    weekName: '',
-    date: '',
-    event: '',
   };
   constructor() {}
 
@@ -80,7 +60,7 @@ export class EventComponent implements OnInit {
   }) {
     let sHour = dayjs(event.startDate).hour();
     if (sHour === 0) {
-      return 'All-day event: ';
+      return 'All-day: ';
     } else {
       return '';
     }

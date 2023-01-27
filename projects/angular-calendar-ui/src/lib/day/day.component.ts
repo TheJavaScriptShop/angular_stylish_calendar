@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 
 @Component({
   selector: 'lib-day',
@@ -7,9 +7,9 @@ import * as dayjs from 'dayjs';
   styleUrls: ['./day.component.css'],
 })
 export class DayComponent implements OnInit {
-  @Input() day: dayjs.Dayjs = dayjs();
-  @Input() today: dayjs.Dayjs = dayjs();
-  @Input() monthDate: dayjs.Dayjs = this.today;
+  @Input() day: dayjs.Dayjs;
+  @Input() today: dayjs.Dayjs;
+  @Input() monthDate: dayjs.Dayjs;
   @Input() colors: {
     monthYearFont: string;
     allDayColor: string;
@@ -21,17 +21,9 @@ export class DayComponent implements OnInit {
     eventFont: string;
     todayFontColor: string;
     normalDayFontColor: string;
-  } = {
-    monthYearFont: '',
-    allDayColor: '',
-    otherMonthDaysFontColor: '',
-    weekendDaysColor: '',
-    weekendDaysFontColor: '',
-    todayBackgroundColor: '',
-    weekNameFont: '',
-    eventFont: '',
-    todayFontColor: '',
-    normalDayFontColor: '',
+    seperatorColor: string;
+    seperatorTopColor: string;
+    todayBtnColor: string;
   };
   @Input() events: Array<{
     color: string;
@@ -40,17 +32,12 @@ export class DayComponent implements OnInit {
     name: string;
     details: string;
     htmlDetails: string;
-  }> = [];
+  }>;
   @Input() fonts: {
     monthYear: string;
     weekName: string;
     date: string;
     event: string;
-  } = {
-    monthYear: '',
-    weekName: '',
-    date: '',
-    event: '',
   };
 
   constructor() {}
@@ -73,22 +60,24 @@ export class DayComponent implements OnInit {
 
   getDateFontColor(day: dayjs.Dayjs) {
     let otherMonthDaysFontColor =
-      this.colors.otherMonthDaysFontColor === ''
+      this.colors?.otherMonthDaysFontColor === ''
         ? '#b5b5b5'
-        : this.colors.otherMonthDaysFontColor;
+        : this.colors?.otherMonthDaysFontColor;
 
     let weekendDaysFontColor =
-      this.colors.weekendDaysFontColor === ''
+      this.colors?.weekendDaysFontColor === ''
         ? '#7c7c7c'
-        : this.colors.weekendDaysFontColor;
+        : this.colors?.weekendDaysFontColor;
 
     let todayFontColor =
-      this.colors.todayFontColor === '' ? 'white' : this.colors.todayFontColor;
+      this.colors?.todayFontColor === ''
+        ? 'white'
+        : this.colors?.todayFontColor;
 
     let normalDayFontColor =
-      this.colors.normalDayFontColor === ''
+      this.colors?.normalDayFontColor === ''
         ? 'black'
-        : this.colors.normalDayFontColor;
+        : this.colors?.normalDayFontColor;
 
     if (this.isBefore(day) || this.isAfter(day)) {
       return otherMonthDaysFontColor;
@@ -103,25 +92,25 @@ export class DayComponent implements OnInit {
 
   getDateBgColor(day: dayjs.Dayjs) {
     let todayBackgroundColor =
-      this.colors.todayBackgroundColor === ''
+      this.colors?.todayBackgroundColor === ''
         ? '#ff3b30'
-        : this.colors.todayBackgroundColor;
+        : this.colors?.todayBackgroundColor;
     if (this.isToday(day)) {
       return todayBackgroundColor;
     } else {
-      return this.colors.allDayColor;
+      return this.colors?.allDayColor;
     }
   }
 
   showEvent(day: dayjs.Dayjs) {
-    let allEvents = this.events.filter((e) => {
+    let allEvents = this.events?.filter((e) => {
       return dayjs(e.startDate).isSame(day, 'day');
     });
 
-    if (allEvents.length === 0) {
+    if (allEvents?.length === 0) {
       return null;
     } else {
-      allEvents.sort((a, b) => {
+      allEvents?.sort((a, b) => {
         return a.startDate < b.startDate
           ? -1
           : a.startDate > b.startDate
@@ -133,14 +122,14 @@ export class DayComponent implements OnInit {
   }
 
   dateStyles(day: dayjs.Dayjs) {
-    if (this.fonts.date === '') {
+    if (this.fonts?.date === '') {
       return {
         'background-color': this.getDateBgColor(day),
         color: this.getDateFontColor(day),
       };
     } else {
       return {
-        'font-size': this?.fonts.date || '1.75rem',
+        'font-size': this.fonts?.date,
         'background-color': this.getDateBgColor(day),
         color: this.getDateFontColor(day),
       };

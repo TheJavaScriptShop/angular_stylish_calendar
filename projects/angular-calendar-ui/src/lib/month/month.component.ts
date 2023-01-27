@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 
 @Component({
   selector: 'lib-month',
@@ -9,6 +9,11 @@ import * as dayjs from 'dayjs';
   styleUrls: ['./month.component.css'],
 })
 export class MonthComponent implements OnInit {
+  @Input() icons: {
+    color: string;
+    nextBtn: string;
+    prevBtn: string;
+  };
   @Input() colors: {
     monthYearFont: string;
     allDayColor: string;
@@ -20,17 +25,9 @@ export class MonthComponent implements OnInit {
     eventFont: string;
     todayFontColor: string;
     normalDayFontColor: string;
-  } = {
-    monthYearFont: '',
-    allDayColor: '',
-    otherMonthDaysFontColor: '',
-    weekendDaysColor: '',
-    weekendDaysFontColor: '',
-    todayBackgroundColor: '',
-    weekNameFont: '',
-    eventFont: '',
-    todayFontColor: '',
-    normalDayFontColor: '',
+    seperatorColor: string;
+    seperatorTopColor: string;
+    todayBtnColor: string;
   };
   @Input() events: Array<{
     color: string;
@@ -39,17 +36,12 @@ export class MonthComponent implements OnInit {
     name: string;
     details: string;
     htmlDetails: string;
-  }> = [];
+  }>;
   @Input() fonts: {
     monthYear: string;
     weekName: string;
     date: string;
     event: string;
-  } = {
-    monthYear: '',
-    weekName: '',
-    date: '',
-    event: '',
   };
   today: dayjs.Dayjs = dayjs();
   monthDate: dayjs.Dayjs = this.today;
@@ -64,6 +56,7 @@ export class MonthComponent implements OnInit {
   month: Array<dayjs.Dayjs> = [];
 
   setMonth() {
+    console.log(this.icons);
     this.month = [];
     let monthStartDay = this.monthDate.startOf('month');
     let monthEndDay = this.monthDate.endOf('month');
@@ -145,11 +138,11 @@ export class MonthComponent implements OnInit {
 
   getBgColor(day: dayjs.Dayjs) {
     let weekendDaysColor =
-      this.colors.weekendDaysColor === ''
+      this.colors?.weekendDaysColor === ''
         ? '#f5f5f5'
-        : this.colors.weekendDaysColor;
+        : this.colors?.weekendDaysColor;
     let allDayColor =
-      this.colors.allDayColor === '' ? 'white' : this.colors.allDayColor;
+      this.colors?.allDayColor === '' ? 'white' : this.colors?.allDayColor;
     if (day.day() === 0) {
       return weekendDaysColor;
     } else {
@@ -158,9 +151,9 @@ export class MonthComponent implements OnInit {
   }
 
   monthYearStyles() {
-    if (this.colors?.monthYearFont === '' && this.fonts.monthYear === '') {
+    if (this.colors?.monthYearFont === '' && this.fonts?.monthYear === '') {
       return {};
-    } else if (this.fonts.monthYear === '') {
+    } else if (this.fonts?.monthYear === '') {
       return {
         color: this.colors?.monthYearFont,
       };
@@ -171,28 +164,74 @@ export class MonthComponent implements OnInit {
     } else {
       return {
         color: this.colors?.monthYearFont,
-        'font-size': this?.fonts.monthYear,
+        'font-size': this?.fonts?.monthYear,
       };
     }
   }
 
   weekNameStyles() {
-    if (this.colors?.weekNameFont === '' && this.fonts.weekName === '') {
-      return {};
-    } else if (this.fonts.weekName === '') {
+    if (this.colors?.weekNameFont === '' && this.fonts?.weekName === '') {
+      return {
+        'border-color':
+          this.colors?.seperatorTopColor === ''
+            ? '#c7c7cc'
+            : this.colors?.seperatorTopColor,
+      };
+    } else if (this.fonts?.weekName === '') {
       return {
         color: this.colors?.weekNameFont,
+        'border-color':
+          this.colors?.seperatorTopColor === ''
+            ? '#c7c7cc'
+            : this.colors?.seperatorTopColor,
       };
     } else if (this.colors?.weekNameFont === '') {
       return {
-        'font-size': this?.fonts.weekName,
+        'font-size': this.fonts?.weekName,
+        'border-color':
+          this.colors?.seperatorTopColor === ''
+            ? '#c7c7cc'
+            : this.colors?.seperatorTopColor,
       };
     } else {
       return {
         color: this.colors?.weekNameFont,
-        'font-size': this?.fonts.weekName,
+        'font-size': this.fonts?.weekName,
+        'border-color':
+          this.colors?.seperatorTopColor === ''
+            ? '#c7c7cc'
+            : this.colors?.seperatorTopColor,
       };
     }
+  }
+
+  seperatorStyles(day) {
+    if (this.colors?.seperatorColor === '') {
+      return {
+        'border-color': '#e5e5e5',
+        'background-color': this.getBgColor(day),
+      };
+    } else {
+      return {
+        'border-color': this.colors?.seperatorColor,
+        'background-color': this.getBgColor(day),
+      };
+    }
+  }
+
+  setIconColor() {
+    if (this.icons.color !== '') {
+      return { color: this.icons.color };
+    } else {
+      return {};
+    }
+  }
+
+  setTodayBtnColor() {
+    return {
+      color:
+        this.colors?.todayBtnColor === '' ? 'red' : this.colors?.todayBtnColor,
+    };
   }
 
   open(content: any) {
