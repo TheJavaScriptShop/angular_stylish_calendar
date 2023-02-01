@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
     [fonts]="fonts"
     [events]="events"
     [icons]="icons"
+    [dimensions]="dimensions"
   ></lib-month>`,
   styles: [],
 })
@@ -15,6 +16,7 @@ export class AngularCalendarUiComponent implements OnInit {
   @Input() fonts;
   @Input() events;
   @Input() icons;
+  @Input() dimensions;
   constructor() {}
 
   ngOnInit(): void {}

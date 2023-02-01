@@ -28,6 +28,10 @@ export class AppComponent implements OnInit {
     todayBtnColor: '',
   };
 
+  dimensions = {
+    // height: '100px',
+  };
+
   fonts = {
     monthYear: '',
     weekName: '',

@@ -14,6 +14,9 @@ export class MonthComponent implements OnInit {
     nextBtn: string;
     prevBtn: string;
   };
+  @Input() dimensions: {
+    height: string;
+  };
   @Input() colors: {
     monthYearFont: string;
     allDayColor: string;
@@ -205,16 +208,23 @@ export class MonthComponent implements OnInit {
     }
   }
 
-  seperatorStyles(day) {
-    if (this.colors?.seperatorColor === '') {
+  dayStyles(day) {
+    if (this.dimensions?.height === '') {
       return {
-        'border-color': '#e5e5e5',
+        'border-color':
+          this.colors?.seperatorColor === ''
+            ? '#e5e5e5'
+            : this.colors?.seperatorColor,
         'background-color': this.getBgColor(day),
       };
     } else {
       return {
-        'border-color': this.colors?.seperatorColor,
+        'border-color':
+          this.colors?.seperatorColor === ''
+            ? '#e5e5e5'
+            : this.colors?.seperatorColor,
         'background-color': this.getBgColor(day),
+        height: this.dimensions?.height,
       };
     }
   }
