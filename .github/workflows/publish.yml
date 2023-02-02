@@ -2,9 +2,7 @@ name: Publish
 on:
   push:
     branches: main
-defaults:
-  run:
-    working-directory: projects/angular-calendar-ui
+
 jobs:
   release:
     name: Publish
@@ -26,9 +24,10 @@ jobs:
         run: npm ci
 
       - name: build
-        run: npm run build
+        run: npm run build:lib
 
       - name: publish
+        working-directory: dist/angular-calendar-ui
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
