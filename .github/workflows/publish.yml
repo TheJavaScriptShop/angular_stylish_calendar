@@ -27,8 +27,7 @@ jobs:
         run: npm run build:lib
 
       - name: publish
-        uses: JS-DevTools/npm-publish@v1
+        run: npm publish --access public
         working-directory: dist/angular-calendar-ui
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          check-version: true
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
