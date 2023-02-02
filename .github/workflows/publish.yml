@@ -2,6 +2,9 @@ name: Publish
 on:
   push:
     branches: main
+defaults:
+  run:
+    working-directory: projects/angular-calendar-ui
 jobs:
   release:
     name: Publish
@@ -15,9 +18,6 @@ jobs:
         with:
           node-version: "16.x"
           cache: "npm"
-
-      - name: angular-calendar-ui
-        run: cd projects/angular-calendar-ui
 
       - name: get list
         run: ls
