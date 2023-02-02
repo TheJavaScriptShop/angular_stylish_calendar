@@ -19,6 +19,9 @@ jobs:
       - name: angular-calendar-ui
         run: cd projects/angular-calendar-ui
 
+      - name: get list
+        run: ls
+
       - name: Install dependencies
         run: npm ci
 
