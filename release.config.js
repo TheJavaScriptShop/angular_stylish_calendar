@@ -1,5 +1,3 @@
-const { default: semanticRelease } = require("semantic-release");
-
 const config = {
   branches: ["main"],
   Plugins: [
