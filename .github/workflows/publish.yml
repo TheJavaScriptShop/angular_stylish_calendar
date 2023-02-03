@@ -6,6 +6,11 @@ on:
 jobs:
   release:
     name: Publish
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -26,6 +31,11 @@ jobs:
 
       - name: build
         run: npm run build:lib
+
+      - name: setup semantic-release
+        run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: publish
         run: npm publish --access public
