@@ -34,11 +34,7 @@ jobs:
 
       - name: setup semantic-release
         run: npx semantic-release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: publish
-        run: npm publish --access public
         working-directory: dist/angular-calendar-ui
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
