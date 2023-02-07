@@ -8,10 +8,8 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",
-    "postbuild": "copyfiles schematics/collection.json ../../dist/angular-calendar-ui/",
-    "postinstall": "node postinstall.js"
+    "postbuild": "copyfiles schematics/collection.json ../../dist/angular-calendar-ui/"
   },
-  "//": ["comment!", "comment line 2"], 
   "peerDependencies": {
     "@angular/common": "^14.2.0",
     "@angular/core": "^14.2.0"

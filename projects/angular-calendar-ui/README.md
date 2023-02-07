@@ -1,24 +1,59 @@
 # AngularCalendarUi
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.0.
+### About
 
-## Code scaffolding
+A calendar component for angular that can display events on a month view.
 
-Run `ng generate component component-name --project angular-calendar-ui` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project angular-calendar-ui`.
-> Note: Don't forget to add `--project angular-calendar-ui` or else it will be added to the default project in your `angular.json` file. 
+### Getting started
 
-## Build
+#### Installtion
 
-Run `ng build angular-calendar-ui` to build the project. The build artifacts will be stored in the `dist/` directory.
+```sh
+npm install angular-calendar-ui
+```
 
-## Publishing
+#### Manual Setup
 
-After building your library with `ng build angular-calendar-ui`, go to the dist folder `cd dist/angular-calendar-ui` and run `npm publish`.
+A little configuration needs to be done in order to work with our package dependencies
 
-## Running unit tests
+Make sure the following are enabled in `tsconfig.json` file
 
-Run `ng test angular-calendar-ui` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```ts
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+  }
+}
 
-## Further help
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Include boostrap and boostrap icons in the styles in angular.json file of your app:
+
+```js
+{
+    "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "src/styles.css"
+            ],
+}
+```
+
+Finally import `angular-calender-ui` module and `ng-boostrap` module into your apps module:
+
+```ts
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { AngularCalendarUiModule } from "angular-calendar-ui";
+import { AppComponent } from "./app.component";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, AngularCalendarUiModule, NgbModule],
+  providers: [],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
