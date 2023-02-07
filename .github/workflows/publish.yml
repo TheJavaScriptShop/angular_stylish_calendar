@@ -29,6 +29,10 @@ jobs:
       - name: build
         run: npm run build:lib
 
+      - name: build schematics
+        working-directory: projects/angular-calendar-ui
+        run: npm run build
+
       - name: setup semantic-release
         run: npx semantic-release
         working-directory: dist/angular-calendar-ui

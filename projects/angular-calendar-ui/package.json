@@ -2,6 +2,14 @@
   "name": "angular-calendar-ui",
   "version": "1.0.0",
   "license": "MIT",
+  "schematics": "./schematics/collection.json",
+  "ng-add": {
+    "save": "true"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.schematics.json",
+    "postbuild": "copyfiles schematics/collection.json ../../dist/angular-calendar-ui/"
+  },
   "peerDependencies": {
     "@angular/common": "^14.2.0",
     "@angular/core": "^14.2.0"
