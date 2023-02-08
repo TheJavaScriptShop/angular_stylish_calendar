@@ -1,12 +1,12 @@
 # AngularCalendarUi
 
-### About
+## About
 
 A calendar component for angular that can display events on a month view.
 
-### Getting started
+## Getting started
 
-#### Installtion
+#### Installation
 
 ```sh
 npm install angular-calendar-ui
@@ -30,7 +30,7 @@ Make sure the following are enabled in `tsconfig.json` file
 
 Include boostrap and boostrap icons in the styles in angular.json file of your app:
 
-```js
+```ts
 {
     "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -57,3 +57,73 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 })
 export class AppModule {}
 ```
+
+## Usage
+
+Props that are needed to show events and customize calendar are:
+
+1. Events
+2. dimensions
+3. colors
+4. fonts
+5. icons
+
+### Events:
+
+Events is an array of objects where each object represents an event that consist of
+
+- color: background color(string)
+- startDate: starting date time of the event(ISO format)
+- endDate: end date time of the event(ISO format)
+- name: Name of the event(string)
+- htmlDetails: description of the event in the form of html.(string)
+  or details: description of the event(string)
+
+note: each event should contain either `details` or `htmlDetails`
+
+example:
+
+```ts
+[
+  {
+    color: "#d1ebfe",
+    startDate: "2023-01-01T02:11:58.421Z",
+    endDate: "2023-01-01T03:11:58.421Z",
+    name: "New Year",
+    htmlDetails: "<h1>This is H1</h1>",
+  },
+  {
+    color: "#d0eadc",
+    startDate: "2023-01-18T10:11:58.421Z",
+    endDate: "2023-01-18T14:11:58.421Z",
+    name: "Birthday",
+    details: "Its my Birthday",
+  },
+];
+```
+
+### colors:
+
+colors is an object to customize font color and background color.
+
+```ts
+colors = {
+  monthYearFont: "",
+  allDayColor: "",
+  otherMonthDaysFontColor: "",
+  weekendDaysColor: "",
+  weekendDaysFontColor: "",
+  todayFontColor: "",
+  normalDayFontColor: "",
+  todayBackgroundColor: "",
+  weekNameFont: "",
+  eventFont: "",
+  seperatorColor: "",
+  seperatorTopColor: "",
+  todayBtnColor: "",
+};
+```
+
+### fonts:
+
+fonts
