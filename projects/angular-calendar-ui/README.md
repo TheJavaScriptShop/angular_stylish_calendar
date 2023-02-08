@@ -28,6 +28,12 @@ Make sure the following are enabled in `tsconfig.json` file
 
 ```
 
+Install ng-bootstrap. Run this command
+
+```sh
+ng add @ng-bootstrap/ng-bootstrap
+```
+
 Include boostrap and boostrap icons in the styles in angular.json file of your app:
 
 ```ts
@@ -68,7 +74,7 @@ Inputs that are needed to show events and customize calendar are:
 4. Fonts
 5. Icons
 
-### Events:
+## Events:
 
 Events is an array of objects where each object represents an event that consist of
 
@@ -102,7 +108,7 @@ Example:
 ];
 ```
 
-### colors:
+## Colors:
 
 Colors is an object to customize font color and background color.
 
@@ -138,7 +144,7 @@ colors = {
 };
 ```
 
-### fonts:
+## Fonts:
 
 Fonts is an object to customize the size of the fonts in the calendar.
 
@@ -158,7 +164,7 @@ fonts = {
 };
 ```
 
-### Icons:
+## Icons:
 
 To customize next and previous button, html can be passed as input to the component.
 
@@ -176,7 +182,7 @@ icons = {
 
 Note: If the user provides empty string `""` then default icons are assigned. we are using bootstrap icons as defualt icons.
 
-### Dimensions:
+## Dimensions:
 
 To customize the dimensions of the calendar
 

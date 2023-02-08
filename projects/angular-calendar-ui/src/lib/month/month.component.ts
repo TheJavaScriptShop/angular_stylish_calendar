@@ -252,10 +252,10 @@ export class MonthComponent implements OnInit {
   }
 
   nextBtn() {
-    if (this.icons?.prevBtn === '') {
+    if (this.icons?.nextBtn === '') {
       return '<i class="bi bi-arrow-right-square"></i>';
     } else {
-      return this.icons?.prevBtn;
+      return this.icons?.nextBtn;
     }
   }
 
