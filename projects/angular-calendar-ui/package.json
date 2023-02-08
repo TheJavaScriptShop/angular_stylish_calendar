@@ -8,11 +8,8 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",
-    "postbuild": "copyfiles schematics/collection.json ../../dist/angular-calendar-ui/"
-  },
-  "peerDependencies": {
-    "@angular/common": "^14.2.0",
-    "@angular/core": "^14.2.0"
+    "postbuild": "copyfiles schematics/collection.json ../../dist/angular-calendar-ui/",
+    "postinstall": "node postinstall.js"
   },
   "dependencies": {
     "@ng-bootstrap/ng-bootstrap": "^13.0.0",
@@ -20,5 +17,10 @@
     "bootstrap-icons": "^1.10.3",
     "dayjs": "^1.11.7",
     "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/common": "^15.1.0",
+    "@angular/core": "^15.1.0"
   }
+
 }
