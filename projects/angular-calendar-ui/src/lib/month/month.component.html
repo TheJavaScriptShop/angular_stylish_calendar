@@ -45,11 +45,11 @@
   </ng-template>
 
   <div class="ms-auto month-name navBtns">
-    <button class="nav-btn" [ngStyle]="setIconColor()" (click)="onPrev()" [innerHtml]="icons.prevBtn"></button>
+    <button class="nav-btn" [ngStyle]="setIconColor()" (click)="onPrev()" [innerHtml]="prevBtn()"></button>
     <button class="nav-btn" [ngStyle]="setTodayBtnColor()" (click)="toToday()">
       Today
     </button>
-    <button class="nav-btn" [ngStyle]="setIconColor()" (click)="onNext()" [innerHtml]="icons.nextBtn"></button>
+    <button class="nav-btn" [ngStyle]="setIconColor()" (click)="onNext()" [innerHtml]="nextBtn()"></button>
   </div>
 </div>
 <div class=" p-1">

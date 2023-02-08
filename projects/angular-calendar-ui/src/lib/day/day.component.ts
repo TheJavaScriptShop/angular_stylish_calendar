@@ -12,15 +12,14 @@ export class DayComponent implements OnInit {
   @Input() monthDate: dayjs.Dayjs;
   @Input() colors: {
     monthYearFont: string;
-    allDayColor: string;
-    otherMonthDaysFontColor: string;
-    weekendDaysColor: string;
-    weekendDaysFontColor: string;
-    todayBackgroundColor: string;
+    weekDaysBg: string;
+    otherMonthDaysFont: string;
+    weekendDaysBg: string;
+    weekendDaysFont: string;
+    todayFont: string;
+    weekDaysFont: string;
+    todayBg: string;
     weekNameFont: string;
-    eventFont: string;
-    todayFontColor: string;
-    normalDayFontColor: string;
     seperatorColor: string;
     seperatorTopColor: string;
     todayBtnColor: string;
@@ -60,24 +59,20 @@ export class DayComponent implements OnInit {
 
   getDateFontColor(day: dayjs.Dayjs) {
     let otherMonthDaysFontColor =
-      this.colors?.otherMonthDaysFontColor === ''
+      this.colors?.otherMonthDaysFont === ''
         ? '#b5b5b5'
-        : this.colors?.otherMonthDaysFontColor;
+        : this.colors?.otherMonthDaysFont;
 
     let weekendDaysFontColor =
-      this.colors?.weekendDaysFontColor === ''
+      this.colors?.weekendDaysFont === ''
         ? '#7c7c7c'
-        : this.colors?.weekendDaysFontColor;
+        : this.colors?.weekendDaysFont;
 
     let todayFontColor =
-      this.colors?.todayFontColor === ''
-        ? 'white'
-        : this.colors?.todayFontColor;
+      this.colors?.todayFont === '' ? 'white' : this.colors?.todayFont;
 
     let normalDayFontColor =
-      this.colors?.normalDayFontColor === ''
-        ? 'black'
-        : this.colors?.normalDayFontColor;
+      this.colors?.weekDaysFont === '' ? 'black' : this.colors?.weekDaysFont;
 
     if (this.isBefore(day) || this.isAfter(day)) {
       return otherMonthDaysFontColor;
@@ -92,13 +87,11 @@ export class DayComponent implements OnInit {
 
   getDateBgColor(day: dayjs.Dayjs) {
     let todayBackgroundColor =
-      this.colors?.todayBackgroundColor === ''
-        ? '#ff3b30'
-        : this.colors?.todayBackgroundColor;
+      this.colors?.todayBg === '' ? '#ff3b30' : this.colors?.todayBg;
     if (this.isToday(day)) {
       return todayBackgroundColor;
     } else {
-      return this.colors?.allDayColor;
+      return this.colors?.weekDaysBg;
     }
   }
 

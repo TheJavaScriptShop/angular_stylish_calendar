@@ -17,15 +17,14 @@ export class EventComponent implements OnInit {
   };
   @Input() colors: {
     monthYearFont: string;
-    allDayColor: string;
-    otherMonthDaysFontColor: string;
-    weekendDaysColor: string;
-    weekendDaysFontColor: string;
-    todayBackgroundColor: string;
+    weekDaysBg: string;
+    otherMonthDaysFont: string;
+    weekendDaysBg: string;
+    weekendDaysFont: string;
+    todayFont: string;
+    weekDaysFont: string;
+    todayBg: string;
     weekNameFont: string;
-    eventFont: string;
-    todayFontColor: string;
-    normalDayFontColor: string;
     seperatorColor: string;
     seperatorTopColor: string;
     todayBtnColor: string;
@@ -104,25 +103,13 @@ export class EventComponent implements OnInit {
     details: string;
     htmlDetails: string;
   }) {
-    if (this.colors?.eventFont === '' && this.fonts.event === '') {
+    if (this.fonts.event === '') {
       return {
         'background-color': this.getEventColor(event),
         'font-size': '0.80em',
-      };
-    } else if (this.fonts.event === '') {
-      return {
-        color: this.colors?.eventFont,
-        'background-color': this.getEventColor(event),
-        'font-size': '0.80em',
-      };
-    } else if (this.colors?.eventFont === '') {
-      return {
-        'font-size': this?.fonts.event,
-        'background-color': this.getEventColor(event),
       };
     } else {
       return {
-        color: this.colors?.eventFont,
         'font-size': this?.fonts.event,
         'background-color': this.getEventColor(event),
       };

@@ -32,11 +32,11 @@ Include boostrap and boostrap icons in the styles in angular.json file of your a
 
 ```ts
 {
-    "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
-              "src/styles.css"
-            ],
+  "styles": [
+      "node_modules/bootstrap/dist/css/bootstrap.min.css",
+      "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+      "src/styles.css"
+    ],
 }
 ```
 
@@ -60,28 +60,28 @@ export class AppModule {}
 
 ## Usage
 
-Props that are needed to show events and customize calendar are:
+Inputs that are needed to show events and customize calendar are:
 
 1. Events
-2. dimensions
-3. colors
-4. fonts
-5. icons
+2. Dimensions
+3. Colors
+4. Fonts
+5. Icons
 
 ### Events:
 
 Events is an array of objects where each object represents an event that consist of
 
-- color: background color(string)
-- startDate: starting date time of the event(ISO format)
-- endDate: end date time of the event(ISO format)
+- color: Background color(string)
+- startDate: Starting date time of the event(ISO format)
+- endDate: End date time of the event(ISO format)
 - name: Name of the event(string)
-- htmlDetails: description of the event in the form of html.(string)
-  or details: description of the event(string)
+- htmlDetails/details: htmlDetails- description of the event in the form of html.(string)
+  details- description of the event(string)
 
-note: each event should contain either `details` or `htmlDetails`
+Note: Each event should contain either `details` or `htmlDetails`
 
-example:
+Example:
 
 ```ts
 [
@@ -104,20 +104,34 @@ example:
 
 ### colors:
 
-colors is an object to customize font color and background color.
+Colors is an object to customize font color and background color.
+
+- monthYearFont: Font color of month and year(string)
+- weekDaysBg: Background color of week days(string)
+- otherMonthDaysFont: Font color of days of next or previous month(string)
+- weekendDaysBg: Background color of weekend days(string)
+- weekendDaysFont: Font color of weekend days(string)
+- todayFont: Font color of today(string)
+- weekDaysFont: Font color of week days(string)
+- todayBg: Backgroung color of today(string)
+- weekNameFont: Font color of week names(string)
+- seperatorColor: Color of the line seperator(string)
+- seperatorTopColor: Color of top lone seperator(string)
+- todayBtnColor: Color of today button(string)
+
+Note: If the user provides empty string `""` then default color is assigned.
 
 ```ts
 colors = {
   monthYearFont: "",
-  allDayColor: "",
-  otherMonthDaysFontColor: "",
-  weekendDaysColor: "",
-  weekendDaysFontColor: "",
-  todayFontColor: "",
-  normalDayFontColor: "",
-  todayBackgroundColor: "",
+  weekDaysBg: "",
+  otherMonthDaysFont: "",
+  weekendDaysBg: "",
+  weekendDaysFont: "",
+  todayFont: "",
+  weekDaysFont: "",
+  todayBg: "",
   weekNameFont: "",
-  eventFont: "",
   seperatorColor: "",
   seperatorTopColor: "",
   todayBtnColor: "",
@@ -126,4 +140,52 @@ colors = {
 
 ### fonts:
 
-fonts
+Fonts is an object to customize the size of the fonts in the calendar.
+
+- monthYear: Font size of the month and year(string)
+- weekName: Font size of week names(string)
+- date: Font size of the date(string)
+- event: Font size of the event(string)
+
+Note: If the user provides empty string `""` then default font size is assigned.
+
+```ts
+fonts = {
+  monthYear: "",
+  weekName: "25px",
+  date: "25px",
+  event: "",
+};
+```
+
+### Icons:
+
+To customize next and previous button, html can be passed as input to the component.
+
+- color: Color of the icon(string)
+- prevBtn: Html for prev button(stirng)
+- nextBtn: Html for next button(String)
+
+```ts
+icons = {
+  color: "",
+  prevBtn: '<i class="bi bi-arrow-left-square"></i>',
+  nextBtn: '<i class="bi bi-arrow-right-square"></i>',
+};
+```
+
+Note: If the user provides empty string `""` then default icons are assigned. we are using bootstrap icons as defualt icons.
+
+### Dimensions:
+
+To customize the dimensions of the calendar
+
+- length: Lenght of the calendar(string)
+- width: Width of the calendar(string)
+
+```ts
+dimensions = {
+  length: "",
+  width: "",
+};
+```

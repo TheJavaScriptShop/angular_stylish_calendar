@@ -19,15 +19,14 @@ export class MonthComponent implements OnInit {
   };
   @Input() colors: {
     monthYearFont: string;
-    allDayColor: string;
-    otherMonthDaysFontColor: string;
-    weekendDaysColor: string;
-    weekendDaysFontColor: string;
-    todayBackgroundColor: string;
+    weekDaysBg: string;
+    otherMonthDaysFont: string;
+    weekendDaysBg: string;
+    weekendDaysFont: string;
+    todayFont: string;
+    weekDaysFont: string;
+    todayBg: string;
     weekNameFont: string;
-    eventFont: string;
-    todayFontColor: string;
-    normalDayFontColor: string;
     seperatorColor: string;
     seperatorTopColor: string;
     todayBtnColor: string;
@@ -141,11 +140,11 @@ export class MonthComponent implements OnInit {
 
   getBgColor(day: dayjs.Dayjs) {
     let weekendDaysColor =
-      this.colors?.weekendDaysColor === ''
+      this.colors?.weekendDaysBg === ''
         ? '#f5f5f5'
-        : this.colors?.weekendDaysColor;
+        : this.colors?.weekendDaysBg;
     let allDayColor =
-      this.colors?.allDayColor === '' ? 'white' : this.colors?.allDayColor;
+      this.colors?.weekDaysBg === '' ? 'white' : this.colors?.weekDaysBg;
     if (day.day() === 0) {
       return weekendDaysColor;
     } else {
@@ -242,6 +241,22 @@ export class MonthComponent implements OnInit {
       color:
         this.colors?.todayBtnColor === '' ? 'red' : this.colors?.todayBtnColor,
     };
+  }
+
+  prevBtn() {
+    if (this.icons?.prevBtn === '') {
+      return '<i class="bi bi-arrow-left-square"></i>';
+    } else {
+      return this.icons?.prevBtn;
+    }
+  }
+
+  nextBtn() {
+    if (this.icons?.prevBtn === '') {
+      return '<i class="bi bi-arrow-right-square"></i>';
+    } else {
+      return this.icons?.prevBtn;
+    }
   }
 
   open(content: any) {
